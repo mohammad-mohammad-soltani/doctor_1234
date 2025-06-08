@@ -1,0 +1,99 @@
+body{
+    background-color: white;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --color: var(--color-white-thin-op);
+    background-color: var(--color-white-add);
+    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+    linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+    background-size: 55px 55px;
+}
+
+.error{
+    text-align: left;
+    font-size: 0.9rem;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--color-red-500);
+}
+h1{
+    font-family: kalameBold;
+    font-size: 1.3rem;
+}
+*{
+    font-family: yekan , sans-serif , SansSerif;
+}
+.login {
+    background-color: var(--color-white-thin-op);
+    color: var(--color-white-op);
+    padding: 30px 50px ;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input{
+        border: 2px var(--color-white-add) solid;
+        width: 90%;
+        padding: 5px 10px ;
+        border-radius: 10px;
+        margin: 10px 0;
+        transition: 0.5s;
+        color: var(--color-yellow)    ;
+        background-color: transparent;
+        &:focus{
+            outline: none;
+            width: 100%;
+            color: var(--color-yellow);
+            background-color: transparent;
+
+        }
+    }
+}
+.submit-button{
+    background-color: var(--color-white-add);
+    color: var(--color-white-op);
+    width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+    border: 2px solid transparent;
+
+    &:hover{
+        width: 90%;
+        background-color: transparent;
+        color: var(--color-white-op);
+        border: 2px solid white;
+    }
+}
+@media screen and (max-width: 700px){
+    body{
+        padding: 10px;
+        background-color: var(--color-white-add);
+        background-image: radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0);
+        background-size: 30px 30px;
+        background-position: -5px -5px
+    }
+    .login{
+        padding: 15px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+}
+
+label{
+    font-family: kalameBold;
+    text-align: right;
+    width: 100%;
+    color: white;
+    width: 90%;
+}
