@@ -111,3 +111,98 @@ $(document).ready(() => {
         $(".loading-box").fadeOut("slow")
     } , 1000)
 })
+
+$(".close-btn") .click(function (){
+    $(`#${$(this).data('close')}`).fadeOut(300)
+})
+$(".add_origin").click(function () {
+    $("#actions_popup").fadeOut(300)
+    $("#add_origin").fadeIn(300).data('clinic' , $(this).data('clinic'))
+})
+$(".add_doctor").click(function () {
+    $("#actions_popup").fadeOut(300)
+    $("#add_doctor").fadeIn(300).data('clinic' , $(this).data('clinic'))
+})
+
+
+
+$("#new_clinic").click(() => {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/add_clinic",
+        data : {
+            name : $("#clinic_name").val()
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : () => {
+            message.show("افزودن کلینیک با موفقیت انجام شد")
+        }
+    })
+})
+
+$("#new_doctor").click(() => {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/add_doctor",
+        data : {
+            name : $("#doctor_name").val(),
+            username : $("#doctor_username").val(),
+            password : $("#doctor_password").val(),
+            clinic_id : $("#add_doctor").data('clinic')
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : (data) => {
+            if(data["ok"]){
+                message.show("افزودن پزشک به کلینیک با موفقیت انجام شد");
+                $("#add_doctor").fadeOut(300);
+            }
+        }
+    })
+})
+
+$("#new_origin").click(() => {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/add_origin",
+        data : {
+            name : $("#origin_name").val(),
+            username : $("#origin_username").val(),
+            password : $("#origin_password").val(),
+            clinic_id : $("#add_origin").data('clinic')
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : (data) => {
+            if(data["ok"]){
+                message.show("افزودن منشی به کلینیک با موفقیت انجام شد");
+                $("#add_origin").fadeOut(300);
+            }
+        }
+    })
+})
+
+$(".actions-btn").click(function () {
+    $("#actions_popup").fadeIn(300)
+    $("#add_origin_btn").data('clinic' , $(this).data('id'))
+    $("#add_doctor_btn").data('clinic' , $(this).data('id'))
+})

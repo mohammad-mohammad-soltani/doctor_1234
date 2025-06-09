@@ -11,7 +11,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title') - سامانه آموزشی شتاب</title>
+    <title>@yield('title') -سامانه مد لاین</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/font/yekan/yekan.css">
@@ -25,15 +25,7 @@
 <header>
 
     <div class="items">
-        <div id="notif_btn" class="notif">
-            <i class="fa-regular fa-bell"></i>
-            <span>اعلان ها</span>
 
-            <div id="notif_box" style="display: none"  class="notif_box ">
-                <span class="kalame-bold notifications">اعلان ها</span>
-
-            </div>
-        </div>
         <div class="profile" id="profile-btn">
             <div class="avatar"  >
                 <img src="{{$user -> profile_path}}" alt="">
@@ -66,7 +58,7 @@
         </div>
     </div>
     <div class="logo">
-        <h1 class="kalame-bold rtl" >دکترینو</h1>
+        <h1 class="kalame-bold rtl" >Med Line</h1>
     </div>
     <div class="open-sidebar">
         <button id="open-sidebar-btn" ><i class="fa-solid fa-bars"></i></button>
@@ -83,14 +75,23 @@
                     <span>داشبورد</span>
                 </a>
             </li>
-{{--            <li  >--}}
-{{--                <a href="{{ route('student.settings') }}" >--}}
-{{--                    <div class="icon">--}}
-{{--                        <i class="fa-solid fa-gear"></i>--}}
-{{--                    </div>--}}
-{{--                    <span>تنظیمات</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
+            <li class="">
+                <a href="{{route("manager.add_client")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-add"></i>
+                    </div>
+                    <span>افزودن حساب های کاربری</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="{{route("manager.clinic")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-list"></i>
+                    </div>
+                    <span>مدیریت کلینیک ها</span>
+                </a>
+            </li>
+
         @endif
 
     </ul>
