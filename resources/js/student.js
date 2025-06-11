@@ -1,5 +1,5 @@
 import $ from "jquery";
-
+import '@majidh1/jalalidatepicker';
 $("#open-sidebar-btn").click(() => {
     $(".side_bar").css("transform" , 'translateX( 0) ')
 })
@@ -205,4 +205,207 @@ $(".actions-btn").click(function () {
     $("#actions_popup").fadeIn(300)
     $("#add_origin_btn").data('clinic' , $(this).data('id'))
     $("#add_doctor_btn").data('clinic' , $(this).data('id'))
+    $("#delete_product_btn").data('product' , $(this).data('id'))
+    $("#delete_calendar").data('calendar' , $(this).data('id'))
+    $("#delete_calendar2 a").data('calendar' , $(this).data('id'))
+    $("#edite_calendar").data('calendar' , $(this).data('id'))
+    $("#view_calendar").data('calendar' , $(this).data('id'))
+    $("#remove_clinic").data('clinic' , $(this).data('id'))
 })
+$("#delete_product_btn").click(function () {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/delete_product",
+        data : {
+            id : $(this).data('product'),
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : (data) => {
+            if(data["ok"]){
+                message.show("حذف کالا / خدمات انجام شد");
+                $("#actions_popup").fadeOut(300);
+                $(`#col_${$(this).data('product')}`).fadeOut(300);
+            }
+        }
+    })
+});
+$("#delete_calendar").click(function () {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/delete_calendar",
+        data : {
+            id : $(this).data('calendar'),
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : (data) => {
+            if(data["ok"]){
+                message.show("حذف نوبت مورد نظر انجام شد");
+                $("#actions_popup").fadeOut(300);
+                $(`#col_${$(this).data('calendar')}`).fadeOut(300);
+            }
+        }
+    })
+});
+$("#delete_calendar2").click(function () {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "./api/delete_calendar",
+        data : {
+            id : $(this).data('calendar'),
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : (data) => {
+            if(data["ok"]){
+                message.show("حذف نوبت مورد نظر انجام شد");
+                $("#actions_popup").fadeOut(300);
+                $(`#col_${$(this).data('calendar')}`).fadeOut(300);
+            }
+        }
+    })
+});
+
+$("#remove_clinic").click(function () {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/delete_clinic",
+        data : {
+            id : $(this).data('clinic'),
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : (data) => {
+            if(data["ok"]){
+                message.show("حذف کلینیک مورد نظر انجام شد");
+                $("#actions_popup").fadeOut(300);
+                $(`#col_${$(this).data('clinic')}`).fadeOut(300);
+            }
+        }
+    })
+});
+
+
+$("#view_calendar").click(function () {
+    window.location = `calendar/${$(this).data('calendar')}`
+});
+
+$("#new_product").click(() => {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/add_product",
+        data : {
+            name : $("#product_name").val()
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : () => {
+            message.show("افزودن محصول / خدمات با موفقیت انجام شد")
+            // window.location.reload()
+        }
+    })
+})
+jalaliDatepicker.startWatch({
+    time : true
+});
+
+
+$("#new_calendar").click(() => {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/add_calendar",
+        data : {
+            name : $("#ref_name").val(),
+            product_line : $("#product_line").val(),
+            product_type : $("#product_type").val(),
+            product_val : $("#product_val").val(),
+            payment_way : $("#payment_way").val(),
+            introduce_way : $("#introduce_way").val(),
+            coming_time : $("#coming_time").val(),
+            serial_number : $("#serial_number").val(),
+            doctor_name : $("#doctor_name").val(),
+            other_prices : $("#other_prices").val(),
+            timeofwork : $("#timeofwork").val(),
+            goted_money : $("#goted_money").val()
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : () => {
+            message.show("افزودن نوبت با موفقیت انجام شد")
+            // window.location.reload()
+        }
+    })
+})
+
+
+$("#edite_calendar").click(() => {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/edite_calendar",
+        data : {
+            id : $("#calendar_id").data('id'),
+            name : $("#ref_name").val(),
+            product_line : $("#product_line").val(),
+            product_type : $("#product_type").val(),
+            product_val : $("#product_val").val(),
+            payment_way : $("#payment_way").val(),
+            introduce_way : $("#introduce_way").val(),
+            coming_time : $("#coming_time").val(),
+            serial_number : $("#serial_number").val(),
+            doctor_name : $("#doctor_name").val(),
+            other_prices : $("#other_prices").val(),
+            timeofwork : $("#timeofwork").val(),
+            goted_money : $("#goted_money").val()
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : () => {
+            message.show("ویرایش نوبت با موفقیت انجام شد")
+            // window.location.reload()
+        }
+    })
+})
+

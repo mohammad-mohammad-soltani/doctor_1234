@@ -15,6 +15,7 @@
         "vite": "^6.2.4"
     },
     "dependencies": {
+        "@majidh1/jalalidatepicker": "^0.9.12",
         "jquery": "^3.7.1",
         "sweetalert2": "^11.22.0"
     }

@@ -52,6 +52,14 @@ return [
             'driver' => 'session',
             'provider' => 'managers',
         ],
+        'origin' => [
+            'driver' => 'session',
+            'provider' => 'origin',
+        ],
+        'doctor' => [
+            'driver' => 'session',
+            'provider' => 'doctor',
+        ],
 
     ],
 
@@ -88,6 +96,14 @@ return [
         'managers' => [
             'driver' => 'eloquent',
             'model' => App\Models\manager::class,
+        ],
+        'origin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\origin::class,
+        ],
+        'doctor' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\doctor::class,
         ],
 
         // 'users' => [

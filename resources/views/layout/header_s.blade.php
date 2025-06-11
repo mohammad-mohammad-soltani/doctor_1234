@@ -3,6 +3,14 @@
         $guard = 'manager';
         $user = \Illuminate\Support\Facades\Auth::guard('manager')->getUser();
     }
+    if(\Illuminate\Support\Facades\Auth::guard('origin') -> check()){
+        $guard = 'origin';
+        $user = \Illuminate\Support\Facades\Auth::guard('origin')->getUser();
+    }
+    if(\Illuminate\Support\Facades\Auth::guard('doctor') -> check()){
+        $guard = 'doctor';
+        $user = \Illuminate\Support\Facades\Auth::guard('doctor')->getUser();
+    }
 @endphp
 <!doctype html>
 <html lang="en">
@@ -19,6 +27,8 @@
     <link rel="stylesheet" href="/font/font-awsem/css/all.min.css">
     @vite('resources/css/app.css')
     @vite('resources/css/theme_st.css')
+    <link rel="stylesheet" href="{{asset('date-picker/style.css')}}">
+    <script type="text/javascript" src="{{asset('date-picker/script.js')}}"></script>
 </head>
 <body>
 
@@ -28,7 +38,7 @@
 
         <div class="profile" id="profile-btn">
             <div class="avatar"  >
-                <img src="{{$user -> profile_path}}" alt="">
+                <img src="" alt="">
             </div>
             <span class="display_name" >{{$user -> name}}</span>
 
@@ -84,6 +94,14 @@
                 </a>
             </li>
             <li class="">
+                <a href="{{route("manager.products")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-add"></i>
+                    </div>
+                    <span>افزودن محصولات</span>
+                </a>
+            </li>
+            <li class="">
                 <a href="{{route("manager.clinic")}}/">
                     <div class="icon">
                         <i class="fa-solid fa-list"></i>
@@ -91,7 +109,40 @@
                     <span>مدیریت کلینیک ها</span>
                 </a>
             </li>
-
+        @elseif($guard === "origin")
+            <li class="">
+                <a href="{{route("origin.products")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-add"></i>
+                    </div>
+                    <span>افزودن محصولات</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="{{route("origin.calendar")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-add"></i>
+                    </div>
+                    <span>افزودن نوبت</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="{{route("manager.clinic")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-list"></i>
+                    </div>
+                    <span>مدیریت کلینیک </span>
+                </a>
+            </li>
+        @elseif($guard === "doctor")
+            <li class="">
+                <a href="{{route("doctor.dashboard")}}">
+                    <div class="icon">
+                        <i class="fa-solid fa-add"></i>
+                    </div>
+                    <span>داشبورد</span>
+                </a>
+            </li>
         @endif
 
     </ul>

@@ -673,6 +673,7 @@ header .profile{
     text-align: right;
     padding: 0.3rem 0.4rem;
     border-radius: 0.6rem;
+    font-family: kalameRegular , sans-serif;
     &:focus{
         outline: none;
     }
@@ -733,7 +734,8 @@ header .profile{
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    button{
+    button , a{
+        text-decoration: none;
         background: var(--color-student-theme);
         padding: 0.5rem 1.2rem;
         color: white;
@@ -773,8 +775,9 @@ section.pop_up{
         flex-wrap: wrap;
     }
 
-    .actions button{
+    .actions button , .actions a{
         width: 40%;
+        text-align: center;
         &:hover{
             width: 50%;
         }
@@ -787,4 +790,24 @@ section.pop_up{
 
     }
 }
+jdp-container{
+    border-radius: 1rem !important;
+    box-shadow: 0 0 20px -7px var(--color-student-theme) !important;
+}
 
+jdp-container *{
+    font-family: kalameRegular , sans-serif;
+}
+jdp-container .jdp-btn-close, jdp-container .jdp-btn-empty, jdp-container .jdp-btn-today{
+    background-color: var(--color-student-theme) !important;
+    border-radius: 0.8rem !important;
+}
+.jdp-container .jdp-day-name.selected, jdp-container .jdp-day.selected{
+    background-color: var(--color-student-theme) !important;
+    border-radius: 1rem !important;
+}
+
+jdp-container .jdp-day-name.today, jdp-container .jdp-day.today{
+    border: none;
+    background: var(--color-gray-100);
+}

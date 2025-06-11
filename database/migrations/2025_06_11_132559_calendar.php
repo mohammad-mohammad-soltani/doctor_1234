@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('calendar', function (Blueprint $table) {
-            $table -> id();
-            $table -> string('name');
-            $table -> string('doctor');
-            $table -> string('clinic_id');
-            $table -> string('time');
+        Schema::table('calendar', function (Blueprint $table) {
+
             $table -> text('requirements');
             $table -> string('price');
             $table -> string('number');
@@ -24,9 +20,6 @@ return new class extends Migration
             $table -> string('timeofwork');
             $table -> string("payment_status");
             $table -> string("introduce_way");
-
-            $table -> timestamps();
-
         });
     }
 
