@@ -43,17 +43,13 @@
             <span class="display_name" >{{$user -> name}}</span>
 
 
+
         </div>
         <div id="profile_box" style="display: none"  class="profile_box ">
             <span class="thin-text kalame-bold" > سلام {{$user -> name}} </span>
             <x-spacer space="10px" />
             <div class="profile-box-menu">
-{{--                <a href="{{route("student.settings")}}">--}}
-{{--                    <span>تنظیمات حساب کاربری</span>--}}
-{{--                </a>--}}
-{{--                <a href="{{route("student.logout")}}">--}}
-{{--                    <span>خروج از حساب کاربری</span>--}}
-{{--                </a>--}}
+
             </div>
 
         </div>
@@ -127,13 +123,21 @@
                 </a>
             </li>
             <li class="">
-                <a href="{{route("manager.clinic")}}/">
+                <a href="{{route("origin.category")}}/">
                     <div class="icon">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-add"></i>
                     </div>
-                    <span>مدیریت کلینیک </span>
+                    <span>افزودن دسته بندی</span>
                 </a>
             </li>
+{{--            <li class="">--}}
+{{--                <a href="{{route("origin.clinic")}}/">--}}
+{{--                    <div class="icon">--}}
+{{--                        <i class="fa-solid fa-list"></i>--}}
+{{--                    </div>--}}
+{{--                    <span>مدیریت کلینیک </span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
         @elseif($guard === "doctor")
             <li class="">
                 <a href="{{route("doctor.dashboard")}}">

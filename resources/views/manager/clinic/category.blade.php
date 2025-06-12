@@ -14,20 +14,20 @@
 @section('title' , 'افزودن کلینیک')
 @section('content')
     <x-spacer space="1rem" />
-    <h1 class="kalame-black text-2xl" > افزودن محصول</h1>
+    <h1 class="kalame-black text-2xl" > افزودن دسته بندی</h1>
     <x-spacer space="1rem"/>
     <section class="add-clinic">
         <div class="line_1">
-            <label class="kalame-bold" for="">نام محصول</label>
+            <label class="kalame-bold" for="">نام دسته بندی</label>
             <x-spacer space="1rem" />
             <input id="product_name" type="text" class="simple-border-input w-full ">
         </div>
         <div class="line_2">
-            <button id="new_product" class="send-btn" >افزودن محصول</button>
+            <button id="new_category" class="send-btn" >افزودن دسته بندی</button>
         </div>
     </section>
     <x-spacer space="1rem" />
-    <h1 class="kalame-black text-2xl" >لیست محصولات</h1>
+    <h1 class="kalame-black text-2xl" >لیست دسته بندی ها</h1>
     <x-spacer space="1rem"/>
     <div class="table" >
         <div class="line head">
@@ -36,7 +36,7 @@
             <div class="name">کلینیک</div>
             <div class="actions">فعالیت ها</div>
         </div>
-        @foreach(\App\Models\Products::get() as $clinic)
+        @foreach(\App\Models\Category::get() as $clinic)
             <div id="col_{{$clinic -> id}}" class="line"  >
                 <div class="id">{{$clinic -> id}}</div>
                 <div class="name">{{$clinic -> name}}</div>
@@ -53,7 +53,7 @@
             <h2 class="kalame-bold" >فعالیت ها</h2>
             <p>شما از اینجا میتوانید فعالیت های مربوط به کالاها / خدمات را انجام دهید</p>
             <div class="actions " style="width: 100%">
-                <button id="delete_product_btn" class=" button full" >حذف کالا / خدمت</button>
+                <button id="delete_category" class=" button full" >حذف کالا / خدمت</button>
 
             </div>
             <x-spacer space="1rem" />

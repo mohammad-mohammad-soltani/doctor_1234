@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Calendar;
+use App\Models\Category;
+use App\Models\Clinic;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -113,4 +115,38 @@ class Origin extends Controller
             return ['ok' => false];
         }
     }
+    public function category(){
+        return view("origin.clinic.category");
+    }
+    public function add_category(Request $request){
+        if(Auth::guard("manager")->check()){
+            $clinic = 'all';
+        }else{
+            $clinic = Auth::guard("origin") -> user() -> clinic_id;
+        }
+        try {
+            $status = Category::create([
+                'name' => $request->name,
+                'clinic' => $clinic,
+
+            ]);
+            return ['ok' => true];
+        }catch (\Exception $exception){
+            return ['ok' => false];
+        }
+    }
+    public function delete_category(Request $request)
+    {
+        try {
+            $status = Category::find($request->id)->forceDelete();
+            return ['ok' => true];
+        } catch (\Exception $exception) {
+            return ['ok' => false];
+        }
+    }
+    public function panel(Request $request ){
+        return view("origin.panel");
+    }
+
+
 }

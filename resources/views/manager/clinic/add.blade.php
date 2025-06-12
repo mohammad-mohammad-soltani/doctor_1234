@@ -100,6 +100,12 @@
                 <x-spacer space="1rem" />
                 <input id="origin_username" type="text" class="simple-border-input w-full ">
                 <x-spacer space="0.5rem" />
+                <label  class="kalame-bold w-full" for="">پزشک منشی</label>
+                <x-spacer space="1rem" />
+                <select id="origin_doctor" type="text" class="simple-border-input w-full ">
+
+                </select>
+                <x-spacer space="0.5rem" />
 
                 <x-spacer space="1rem" />
                 <button id="new_origin" class="send-btn" >افزودن منشی</button>

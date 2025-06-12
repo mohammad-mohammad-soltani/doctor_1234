@@ -44,7 +44,7 @@
             <h2 class="kalame-bold" >فعالیت ها</h2>
             <p>شما از اینجا میتوانید فعالیت های مربوط به نوبت را انجام دهید</p>
             <div class="actions " style="width: 100%">
-                <button id="view_calendar"  class=" button " >مشاهده و ویرایش نوبت</button>
+                <a href="" id="edite_calendar_3"  class=" button " >مشاهده و ویرایش نوبت</a>
                 <button id="delete_calendar2" class=" button " >حذف نوبت</button>
 
 

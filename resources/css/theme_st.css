@@ -491,46 +491,32 @@ header .profile{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr ;
     gap: 2rem;
 }
 .box-1-3{
-    padding: 40px 20px;
-    border: 1px solid var(--color-gray-300);
+    padding: 1rem 2rem;
+    border: 3px solid var(--color-student-theme);
     border-radius: 0.7rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--color-gray-500);
+    color: var(--color-gray-800);
     font-size: 1.2rem;
     h2{
         font-family: kalameBold;
     }
+    span{
+        font-family: kalameRegular , sans-serif;
+    }
 }
 .box-full {
-    border: 1px solid var(--color-gray-300);
+    /*border: 3px solid var(--color-student-theme);*/
     border-radius: 0.7rem;
     grid-column: 1/4;
     padding: 2rem;
-    background-color: white;
-    color: var(--color-gray-500);
-    h2{
-        color: var(--color-gray-600);
-        font-family: kalameBold;
-    }
-    table {
-        width: 100%;
-        text-align: center;
-    }
-    thead th {
-        font-weight: bold;
-        color: var(--color-student-theme);
-
-    }
-    tr{
-        height: 2rem;
-    }
+    background: white;
 }
 .flex-end{
     display: flex;

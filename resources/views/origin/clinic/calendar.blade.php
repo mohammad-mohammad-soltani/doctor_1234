@@ -23,7 +23,11 @@
             <x-spacer space="1rem" />
             <label class="kalame-bold" for="">لاین خدماتی</label>
             <x-spacer space="1rem" />
-            <input id="product_line" type="text" class="simple-border-input w-full ">
+            <select autocomplete="off" name="" id="product_line" class="simple-border-input w-full" id="" >
+                @foreach(\App\Models\Category::where('clinic' ,  Auth::guard('origin') -> user() -> clinic_id) -> orWhere('clinic' , 'all') -> get() as $product)
+                    <option value="{{$product -> id}}">{{$product -> name}}</option>
+                @endforeach
+            </select>
             <x-spacer space="1rem" />
             <label class="kalame-bold" for="">نوع کالای مصرفی</label>
             <x-spacer space="1rem" />
@@ -116,7 +120,7 @@
             <p>شما از اینجا میتوانید فعالیت های مربوط به نوبت را انجام دهید</p>
             <div class="actions " style="width: 100%">
                 <button id="delete_calendar" class=" button " >حذف نوبت</button>
-                <button id="edite_calendar" class=" button " >ویرایش نوبت</button>
+                <a href="./" id="edite_calendar_2" class=" button " >ویرایش نوبت</a>
 
             </div>
             <x-spacer space="1rem" />

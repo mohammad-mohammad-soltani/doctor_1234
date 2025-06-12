@@ -27,7 +27,7 @@
             <h2 class="kalame-bold" >فعالیت ها</h2>
             <p>شما از اینجا میتوانید فعالیت های مربوط به کلینیک ها را انجام دهید</p>
             <div class="actions " style="width: 100%">
-                <a href="/clinic/{{$clinic -> id}}"  class="add_doctor button" >تنظیمات کلینیک</a>
+                <a href="./" id="clinic_settings_btn"  class="add_doctor button" >تنظیمات کلینیک</a>
                 <button id="remove_clinic" class="add_origin button" >حذف کلینیک</button>
 
             </div>

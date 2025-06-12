@@ -26,8 +26,11 @@
             <x-spacer space="1rem" />
             <label class="kalame-bold" for="">لاین خدماتی</label>
             <x-spacer space="1rem" />
-            <input autocomplete="off" value="{{$recorde -> product_line }}" id="product_line" type="text" class="simple-border-input w-full ">
-            <x-spacer space="1rem" />
+            <select autocomplete="off" name="" id="product_line" class="simple-border-input w-full" id="" >
+                @foreach(\App\Models\Category::where('clinic' ,  Auth::guard('doctor') -> user() -> clinic_id) -> orWhere('clinic' , 'all') -> get() as $product)
+                    <option  @if($recorde -> product_line == $product -> id) selected="1" @endif   value="{{$product -> id}}">{{$product -> name}}</option>
+                @endforeach
+            </select>            <x-spacer space="1rem" />
             <label class="kalame-bold" for="">نوع کالای مصرفی</label>
             <x-spacer space="1rem" />
             <select autocomplete="off" name="" id="product_type" class="simple-border-input w-full" id="" >
