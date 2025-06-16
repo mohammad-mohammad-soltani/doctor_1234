@@ -224,7 +224,7 @@ $(".actions-btn").click(function () {
     $("#delete_calendar2 a").data('calendar' , $(this).data('id'))
     $("#edite_calendar").data('calendar' , $(this).data('id'))
     $("#edite_calendar_2").prop('href' , `./${$(this).data('id')}`)
-    $("#edite_calendar_3").prop('href' , `Doctor/calendar/${$(this).data('id')}`)
+    $("#edite_calendar_3").prop('href' , `Doctor/calendarp/${$(this).data('id')}`)
     $("#view_calendar").data('calendar' , $(this).data('id'))
     $("#remove_clinic").data('clinic' , $(this).data('id'))
     $("#delete_category").data('clinic' , $(this).data('id'))

@@ -147,6 +147,11 @@ class Origin extends Controller
     public function panel(Request $request ){
         return view("origin.panel");
     }
+    public function logout()
+    {
+        Auth::guard("origin")->logout();
+        return redirect('/Receptionist');
+    }
 
 
 }

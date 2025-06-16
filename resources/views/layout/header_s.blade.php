@@ -20,7 +20,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') -سامانه مد لاین</title>
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/font/yekan/yekan.css">
     <link rel="stylesheet" href="/font/kalame/kalame.css">
@@ -49,7 +48,13 @@
             <span class="thin-text kalame-bold" > سلام {{$user -> name}} </span>
             <x-spacer space="10px" />
             <div class="profile-box-menu">
-
+                @if($guard == 'doctor')
+                    <a href="Doctor/logout" class="send-btn">خروج از حساب کاربری</a>
+                @elseif($guard == 'origin')
+                    <a href="Reseptionist/logout" class="send-btn">خروج از حساب کاربری</a>
+                @elseif($guard == 'manager')
+                    <a href="Manager    /logout" class="send-btn">خروج از حساب کاربری</a>
+                @endif
             </div>
 
         </div>
@@ -103,6 +108,22 @@
                         <i class="fa-solid fa-list"></i>
                     </div>
                     <span>مدیریت کلینیک ها</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="{{route("manager.category")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-add"></i>
+                    </div>
+                    <span>افزودن دسته بندی</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="{{route("manager.settings")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-dashboard"></i>
+                    </div>
+                    <span>تنظیمات حساب کاربری</span>
                 </a>
             </li>
         @elseif($guard === "origin")

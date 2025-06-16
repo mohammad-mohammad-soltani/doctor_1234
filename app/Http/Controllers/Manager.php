@@ -226,5 +226,10 @@ class Manager extends Controller
             return ['ok' => false];
         }
     }
+    public function logout()
+    {
+        Auth::guard("manager")->logout();
+        return redirect('/Manager');
+    }
 
 }

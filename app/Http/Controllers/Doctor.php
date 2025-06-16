@@ -66,5 +66,10 @@ class Doctor extends Controller
             return ['ok' => false];
         }
     }
+    public function logout()
+    {
+        Auth::guard("doctor")->logout();
+        return redirect('/Doctor');
+    }
 
 }

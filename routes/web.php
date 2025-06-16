@@ -14,6 +14,7 @@ Route::prefix('Manager')->group(function () {
         Route::get("/clinic" , [\App\Http\Controllers\Manager::class, "clinic"]) -> name("manager.clinic");
         Route::get("/clinic/{id}" , [\App\Http\Controllers\Manager::class, "clinic2"]) -> name("manager.clinic_2");
         Route::get("/category" , [\App\Http\Controllers\Manager::class, "category"]) -> name("manager.category");
+        Route::get("/logout" , [\App\Http\Controllers\Manager::class, "logout"]) -> name("manager.logout");
         Route::prefix("api")->group(function () {
             Route::post('update_clinic', [\App\Http\Controllers\Manager::class, 'update_clinic'])->name('manager.update_clinic');
             Route::post("add_clinic" , [\App\Http\Controllers\Manager::class, "add_clinic"]);
@@ -45,6 +46,7 @@ Route::prefix('Receptionist')->group(function () {
         Route::get("/calendar/{id}" , [\App\Http\Controllers\Origin::class, "calendar_edite"]) -> name("origin.calendar_edite");
         Route::get("/category" , [\App\Http\Controllers\Origin::class, "category"]) -> name("origin.category");
 //        Route::get("/clinic" , [\App\Http\Controllers\Origin::class, "clinic"]) -> name("origin.clinic");
+        Route::get("/logout" , [\App\Http\Controllers\Origin::class, "logout"]) -> name("origin.logout");
 
         Route::prefix("api")->group(function () {
             Route::post("add_category" , [\App\Http\Controllers\Origin::class, "add_category"]);
@@ -64,6 +66,7 @@ Route::prefix('Doctor')->group(function () {
     Route::get("/login" , [\App\Http\Controllers\Doctor::class , 'login'])->name("doctor.login");
     Route::post("/login" , [\App\Http\Controllers\Doctor::class , 'login_post'])->name("doctor.login_post");
     Route::get("/calendar/{id}" , [\App\Http\Controllers\Doctor::class, "calendar_edite"]) -> name("doctor.calendar_edite");
+    Route::get("/logout" , [\App\Http\Controllers\Doctor::class, "logout"]) -> name("doctor.logout");
 
     Route::middleware(\App\Http\Middleware\DoctorAuth::class)->group( function () {
         Route::get("/" , [\App\Http\Controllers\Doctor::class, "panel"]) -> name("doctor.dashboard");
