@@ -6,7 +6,7 @@
     <div class="main_page_grid">
         <div class="student_describe box-1-3">
             <h2>تعداد نوبت های ثبت شده کلینیک :</h2>
-            <span><span>{{\App\Models\Calendar::where('clinic_id' , Auth::guard('origin') -> user() -> clinic_id ) -> get()->count()}}</span><span></span> <span>کلینیک</span> </span>
+            <span><span>{{\App\Models\Calendar::where('clinic_id' , Auth::guard('origin') -> user() -> clinic_id ) -> get()->count()}}</span><span></span> <span>نوبت</span> </span>
             <x-spacer space="2rem" />
         </div>
         <div class="score_box box-1-3">

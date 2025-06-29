@@ -148,7 +148,8 @@ class Manager extends Controller
         }
     }
     public function settings(){
-        return view("manager.settings");
+        $user = Auth::guard("manager")->user();
+        return view("manager.settings" , compact('user'));
     }
     public function clinic(){
         return view("manager.clinic.clinic");
@@ -224,6 +225,26 @@ class Manager extends Controller
             return ['ok' => true];
         } catch (\Exception $exception) {
             return ['ok' => false];
+        }
+    }
+    public function manager_settings(Request $request){
+        try {
+            $doctor = \App\Models\Manager::find(Auth::guard("manager")->id());
+
+            $data = [
+                "name" => $request->name,
+                "username" => $request->username,
+            ];
+
+            if (!empty($request->password)) {
+                $data["password"] = bcrypt($request->password);
+            }
+
+            $doctor->update($data);
+
+            return ['ok' => true];
+        } catch (\Exception $exception) {
+            return ['ok' => false , 'error' => $exception->getMessage()];
         }
     }
     public function logout()

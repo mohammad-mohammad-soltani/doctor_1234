@@ -224,7 +224,7 @@ $(".actions-btn").click(function () {
     $("#delete_calendar2 a").data('calendar' , $(this).data('id'))
     $("#edite_calendar").data('calendar' , $(this).data('id'))
     $("#edite_calendar_2").prop('href' , `./${$(this).data('id')}`)
-    $("#edite_calendar_3").prop('href' , `Doctor/calendarp/${$(this).data('id')}`)
+    $("#edite_calendar_3").prop('href' , `Doctor/calendar/${$(this).data('id')}`)
     $("#view_calendar").data('calendar' , $(this).data('id'))
     $("#remove_clinic").data('clinic' , $(this).data('id'))
     $("#delete_category").data('clinic' , $(this).data('id'))
@@ -611,3 +611,29 @@ $("#edite_origin_btn").click(() => {
     })
 })
 
+$("#manager_settings").click(() => {
+    $.post({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+        url : "../api/settings",
+        data : {
+            name : $("#name").val(),
+            username : $("#username").val(),
+            password : $("#password").val(),
+        },
+        error: function(xhr, textStatus, error){
+
+            if(xhr.status == 422){
+                message.show(xhr.responseJSON.message , 3000)
+            }
+        },
+        success : (data) => {
+            if(data["ok"]){
+                message.show("ویرایش اطلاعات اکانت با موفقیت انجام شد");
+                $("#edite_origin_pop").fadeOut(300);
+                $(`#col_${$("#edite_origin_pop").data('doctor')}_doctor .name_v`).html($("#origin_name").val())
+            }
+        }
+    })
+})

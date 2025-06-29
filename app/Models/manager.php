@@ -7,4 +7,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class manager extends Authenticatable
 {
     protected $table = "managers";
+    protected $fillable = ['name'  ,'username' , 'password'];
+
 }

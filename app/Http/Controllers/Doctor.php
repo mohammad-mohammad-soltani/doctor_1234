@@ -71,5 +71,30 @@ class Doctor extends Controller
         Auth::guard("doctor")->logout();
         return redirect('/Doctor');
     }
+    public function settings(){
+        $user = Auth::guard("doctor")->user();
+        return view("doctor.settings" , compact('user'));
+    }
+
+    public function doctor_settings(Request $request){
+        try {
+            $doctor = \App\Models\Doctor::find(Auth::guard("doctor")->id());
+
+            $data = [
+                "name" => $request->name,
+                "username" => $request->username,
+            ];
+
+            if (!empty($request->password)) {
+                $data["password"] = bcrypt($request->password);
+            }
+
+            $doctor->update($data);
+
+            return ['ok' => true];
+        } catch (\Exception $exception) {
+            return ['ok' => false , 'error' => $exception->getMessage()];
+        }
+    }
 
 }

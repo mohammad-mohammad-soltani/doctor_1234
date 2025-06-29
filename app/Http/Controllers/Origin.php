@@ -153,5 +153,31 @@ class Origin extends Controller
         return redirect('/Receptionist');
     }
 
+    public function settings(){
+        $user = Auth::guard("origin")->user();
+        return view("doctor.settings" , compact('user'));
+    }
+
+    public function origin_settings(Request $request){
+        try {
+            $origin = \App\Models\Origin::find(Auth::guard("origin")->id());
+
+            $data = [
+                "name" => $request->name,
+                "username" => $request->username,
+            ];
+
+            if (!empty($request->password)) {
+                $data["password"] = bcrypt($request->password);
+            }
+
+            $origin->update($data);
+
+            return ['ok' => true];
+        } catch (\Exception $exception) {
+            return ['ok' => false , 'error' => $exception->getMessage()];
+        }
+    }
+
 
 }

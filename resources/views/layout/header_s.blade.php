@@ -49,11 +49,11 @@
             <x-spacer space="10px" />
             <div class="profile-box-menu">
                 @if($guard == 'doctor')
-                    <a href="Doctor/logout" class="send-btn">خروج از حساب کاربری</a>
+                    <a href="{{route('doctor.logout')}}" class="send-btn">خروج از حساب کاربری</a>
                 @elseif($guard == 'origin')
-                    <a href="Reseptionist/logout" class="send-btn">خروج از حساب کاربری</a>
+                    <a href="{{route('origin.logout')}}" class="send-btn">خروج از حساب کاربری</a>
                 @elseif($guard == 'manager')
-                    <a href="Manager    /logout" class="send-btn">خروج از حساب کاربری</a>
+                    <a href="{{route('manager.logout')}}" class="send-btn">خروج از حساب کاربری</a>
                 @endif
             </div>
 
@@ -151,6 +151,14 @@
                     <span>افزودن دسته بندی</span>
                 </a>
             </li>
+            <li class="">
+                <a href="{{route("origin.settings")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-dashboard"></i>
+                    </div>
+                    <span>تنظیمات حساب کاربری</span>
+                </a>
+            </li>
 {{--            <li class="">--}}
 {{--                <a href="{{route("origin.clinic")}}/">--}}
 {{--                    <div class="icon">--}}
@@ -166,6 +174,14 @@
                         <i class="fa-solid fa-add"></i>
                     </div>
                     <span>داشبورد</span>
+                </a>
+            </li>
+            <li class="">
+                <a href="{{route("doctor.settings")}}/">
+                    <div class="icon">
+                        <i class="fa-solid fa-dashboard"></i>
+                    </div>
+                    <span>تنظیمات حساب کاربری</span>
                 </a>
             </li>
         @endif

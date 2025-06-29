@@ -797,3 +797,154 @@ jdp-container .jdp-day-name.today, jdp-container .jdp-day.today{
     border: none;
     background: var(--color-gray-100);
 }
+
+
+
+
+/*------------------------------------- Setting Page --------------------------------------------*/
+.setting-form{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+}
+.main_form{
+    width: 70%;
+}
+.profile_form{
+    width: 50%;
+}
+.profile_form{
+    padding: 10px;
+}
+.inner_form_box{
+    padding: 3rem 2rem;
+    background-color: var(--color-gray-100);
+    border-radius: 1.5rem;
+    h2{
+        font-family: kalameBold;
+        font-size: 1.5rem;
+    }
+
+}
+.image_text{
+    display: flex;
+    gap: 10px;
+    .profile_pic{
+        width: 30%;
+        img{
+            width: 100% !important;
+            object-fit: cover !important;
+            border-radius: 50%;
+            aspect-ratio: 1 / 1; /* نسبت طول به عرض = ۱ */
+
+        }
+    }
+    .text{
+        font-family: yekan , sans-serif , SansSerif;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0 ;
+        label{
+            margin-right: auto;
+            margin-top: auto;
+        }
+        width: 80%;
+
+    }
+}
+.main_form{
+    padding: 10px;
+}
+.thin-text  {
+    color: var(--color-gray-600);
+}
+.line_form_items{
+    display: flex;
+    justify-content: space-between;
+    input{
+        width: 50%;
+    }
+}
+.simple-border-input{
+    outline: none;
+    text-align: left;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+.en{
+    font-family: sans-serif , Yekan;
+}
+
+.full-width{
+    width: 100%;
+}
+.simple-textarea{
+    width: 100%;
+    outline: none;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    resize: none;
+}
+.save_button{
+    background: linear-gradient( var(--color-student-theme) -116% , var(--color-student-theme-thin)300%);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    &:hover{
+        padding: 10px 50px;
+
+    }
+}
+
+@media screen and (max-width: 1300px){
+    .main_form{
+        width: 100%;
+        /*padding: 0;*/
+    }
+    .profile_form{
+        width: 100%;
+        /*padding: 0;*/
+    }
+    .about_you_form{
+    }
+
+}
+@media screen and (max-width: 1300px){
+    .line_form_items{
+        gap: 5px;
+        flex-direction: column;
+        input{
+            width: 100%;
+        }
+    }
+    .setting-form{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px 0;
+    }
+    .save_button{
+        width: 50%;
+        margin-right: auto;
+    }
+    .main_form{
+        width: 100%;
+        padding: 0;
+    }
+    .profile_form{
+        width: 100%;
+        padding: 0;
+    }
+}
+.class-space-between{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+}

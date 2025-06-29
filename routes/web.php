@@ -31,6 +31,7 @@ Route::prefix('Manager')->group(function () {
             Route::post("edite_doctor" , [\App\Http\Controllers\Manager::class, "edite_doctor"]);
             Route::post("edite_origin" , [\App\Http\Controllers\Manager::class, "edite_origin"]);
             Route::post("delete_origin" , [\App\Http\Controllers\Manager::class, "delete_origin"]);
+            Route::post("settings" , [\App\Http\Controllers\Manager::class, "manager_settings"]);
 
         });
     });
@@ -47,6 +48,7 @@ Route::prefix('Receptionist')->group(function () {
         Route::get("/category" , [\App\Http\Controllers\Origin::class, "category"]) -> name("origin.category");
 //        Route::get("/clinic" , [\App\Http\Controllers\Origin::class, "clinic"]) -> name("origin.clinic");
         Route::get("/logout" , [\App\Http\Controllers\Origin::class, "logout"]) -> name("origin.logout");
+        Route::get("/settings" , [\App\Http\Controllers\Origin::class, "settings"]) -> name("origin.settings");
 
         Route::prefix("api")->group(function () {
             Route::post("add_category" , [\App\Http\Controllers\Origin::class, "add_category"]);
@@ -56,6 +58,7 @@ Route::prefix('Receptionist')->group(function () {
             Route::post("edite_calendar" , [\App\Http\Controllers\Origin::class, "edite_calendar"]);
             Route::post("delete_calendar" , [\App\Http\Controllers\Origin::class, "delete_calendar"]);
             Route::post("delete_category" , [\App\Http\Controllers\Manager::class, "delete_category"]);
+            Route::post("settings" , [\App\Http\Controllers\Origin::class, "origin_settings"]);
 
         });
     });
@@ -67,12 +70,14 @@ Route::prefix('Doctor')->group(function () {
     Route::post("/login" , [\App\Http\Controllers\Doctor::class , 'login_post'])->name("doctor.login_post");
     Route::get("/calendar/{id}" , [\App\Http\Controllers\Doctor::class, "calendar_edite"]) -> name("doctor.calendar_edite");
     Route::get("/logout" , [\App\Http\Controllers\Doctor::class, "logout"]) -> name("doctor.logout");
+    Route::get("/settings" , [\App\Http\Controllers\Doctor::class, "settings"]) -> name("doctor.settings");
 
     Route::middleware(\App\Http\Middleware\DoctorAuth::class)->group( function () {
         Route::get("/" , [\App\Http\Controllers\Doctor::class, "panel"]) -> name("doctor.dashboard");
         Route::prefix("api")->group(function () {
             Route::post("edite_calendar" , [\App\Http\Controllers\Doctor::class, "edite_calendar"]);
             Route::post("delete_calendar" , [\App\Http\Controllers\Doctor::class, "delete_calendar"]);
+            Route::post("settings" , [\App\Http\Controllers\Doctor::class, "doctor_settings"]);
 
         });
     });
